@@ -1,0 +1,64 @@
+{
+    "name": "🟢",
+    "globIgnorePaths": [
+        "**/.package-lock.json"
+    ],
+    "tree": {
+        "$className": "DataModel",
+        "Lighting": {
+            "$path": "assets/lighting/Lighting.rbxm"
+        },
+        "ReplicatedStorage": {
+            "Assets": {
+                "$path": "assets/models",
+                "Overhead": {
+                    "$path": "assets/objects/Overhead.rbxm"
+                },
+                "Slime": {
+                    "$path": "assets/objects/Slime.rbxm"
+                }
+            },
+            "UI": {
+                "$path": "assets/ui"
+            }
+        },
+        "ServerScriptService": {
+            "Nevermore": {
+                "$className": "Folder",
+                "game": {
+                    "$path": "src/modules"
+                },
+                "node_modules": {
+                    "$path": "node_modules",
+                    "@lib": {
+                        "$path": "lib"
+                    }
+                }
+            },
+            "Main": {
+                "$path": "src/scripts/Server"
+            }
+        },
+        "ServerStorage": {
+            "Spawners": {
+                "$path": "assets/other/Spawners.rbxm"
+            },
+            "TagList": {
+                "$path": "assets/other/TagList.rbxm"
+            }
+        },
+        "StarterPlayer": {
+            "StarterPlayerScripts": {
+                "Main": {
+                    "$path": "src/scripts/Client"
+                }
+            }
+        },
+        "TextChatService": {
+            "$path": "assets/other/TextChatService.rbxm"
+        },
+        "Workspace": {
+            "$path": "assets/map/Map.rbxm"
+        }
+    }
+}

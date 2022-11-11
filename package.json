@@ -1,0 +1,17 @@
+{
+    "dependencies": {
+        "@elttob/fusion": "github:elttob/fusion",
+        "@quenty/attributeutils": "^8.1.1",
+        "@quenty/binder": "^8.1.1",
+        "@quenty/loader": "^6.0.0",
+        "@quenty/playerbinder": "^8.1.1",
+        "@quenty/playerhumanoidbinder": "^8.1.1",
+        "@quenty/playerthumbnailutils": "^6.0.1",
+        "@quenty/playerutils": "^2.2.1",
+        "@quenty/promise": "^6.0.1",
+        "@quenty/remoting": "^6.0.1",
+        "@quenty/servicebag": "^6.0.0",
+        "@quenty/signal": "^2.3.0",
+        "@quenty/textfilterutils": "^6.0.1"
+    }
+}

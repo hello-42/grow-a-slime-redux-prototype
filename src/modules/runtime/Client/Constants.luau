@@ -1,0 +1,3 @@
+return {
+	Random = Random.new(),
+}

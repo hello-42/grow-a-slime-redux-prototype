@@ -1,0 +1,13 @@
+local require = require(script.Parent.loader :: ModuleScript).load(script)
+local Binder = require("Binder")
+local BinderProvider = require("BinderProvider")
+local PlayerBinder = require("PlayerBinder")
+local PlayerCharacterBinder = require("PlayerCharacterBinder")
+
+return BinderProvider.new(function(self, serviceBag)
+	self:Add(Binder.new("Rain", require("Rain"), self, serviceBag))
+	self:Add(PlayerBinder.new("Player", require("Player"), self, serviceBag))
+	self:Add(PlayerBinder.new("Slime", require("Slime"), self, serviceBag))
+	self:Add(PlayerCharacterBinder.new("Character", require("Character"), self, serviceBag))
+	self:Add(PlayerCharacterBinder.new("Overhead", require("Character"), self, serviceBag))
+end)
