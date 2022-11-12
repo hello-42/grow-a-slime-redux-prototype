@@ -1,2 +1,1 @@
-# Add .luau files to be highlighted as .lua files
 *.luau linguist-language=Lua

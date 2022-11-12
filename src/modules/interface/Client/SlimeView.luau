@@ -158,10 +158,15 @@ function SlimeView:_init()
 						Parent = viewportFrame.Value,
 
 						CFrame = Computed(function()
-							local position = localSlimeCFrame:get().Position
-							local extents = localSlimeSize:get().Magnitude / 2
-
-							return CFrame.new(position) * cameraCFrame:get().Rotation * CFrame.new(0, extents, -extents)
+							local camCFrame = cameraCFrame:get()
+							local extents = localSlimeSize:get().Magnitude
+							local slimeCFrame = localSlimeCFrame:get()
+							local unit = (camCFrame.Position - slimeCFrame.Position).Unit
+							
+							return CFrame.lookAt(
+								(CFrame.new(slimeCFrame.Position) * camCFrame.Rotation * CFrame.new(unit * extents)).Position,
+								slimeCFrame.Position
+							)
 						end),
 					}),
 				})

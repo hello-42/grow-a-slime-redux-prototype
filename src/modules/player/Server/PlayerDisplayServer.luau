@@ -1,5 +1,5 @@
 local require = require(script.Parent.loader :: ModuleScript).load(script)
-local Color = require("Color").Color
+local Color = require("Color")
 local Maid = require("Maid")
 local TextFilterUtils = require("TextFilterUtils")
 
@@ -36,7 +36,7 @@ local function handleDisplayEditRequest(playerClass)
 			if next(safePayload) then
 				if safePayload.DisplayColor then
                     local _, color = pcall(function()
-                        return Color.named(safePayload.DisplayColor):toColor3()
+                        return Color.Color.named(safePayload.DisplayColor):toColor3()
                     end)
 
                     if typeof(color) == "Color3" then

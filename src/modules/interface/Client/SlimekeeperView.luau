@@ -90,9 +90,14 @@ function SlimekeeperView:_init(playerClass)
 					and showSlimekeeper:get()
 					and not gameProcessedEvent
 				then
-					canStep = false
-					elapsedInRadius = 0
-					showSlimekeeper:set(false)
+					if changeInformationVisible:get() then
+						changeInformationVisible:set(false)
+						menuVisible:set(true)
+					else
+						canStep = false
+						elapsedInRadius = 0
+						showSlimekeeper:set(false)
+					end
 				end
 			end),
 			RunService.RenderStepped:Connect(function(deltaTime)
@@ -120,7 +125,7 @@ function SlimekeeperView:_init(playerClass)
 			Observer(showSlimekeeper):onChange(function()
 				if not showSlimekeeper:get() then
 					menuVisible:set(true)
-					changeInformationVisible:set(true)
+					changeInformationVisible:set(false)
 				end
 			end),
 		},
@@ -140,7 +145,7 @@ function SlimekeeperView:_init(playerClass)
 	})
 	Hydrate(valuableChildren.ChangeInformation)({
         GroupTransparency = Spring(Computed(function()
-            return (changeInformationVisible:get() and 0) or 1
+            return (changeInformationVisible:get() and 0) or (menuVisible:get() and 1)
         end), 20),
 	})
 	Hydrate(valuableChildren.NameSelectorBox)({

@@ -34,29 +34,37 @@ function GameLeaderboardServer:Start()
 		end)
 
 		for i = 1, 3 do
-			if rankedSlimes[i] then
-				local slime = rankedSlimes[i][1]
-				local humanoidDescription = slime._player.Character.Humanoid.HumanoidDescription:Clone()
+			local dummy = LEADERBOARD.Parent[tostring(i)].Dummy
+			local dummyHumanoid = dummy.Humanoid
+			local dummyHumanoidDescription = dummyHumanoid:FindFirstChildOfClass("HumanoidDescription")
 
-				local dummy = LEADERBOARD.Parent[tostring(i)].Dummy
-				local dummyHumanoid = dummy.Humanoid
+			if dummyHumanoidDescription then
+				dummyHumanoidDescription:Destroy()
+			end
 
-				local dummyHumanoidDescription = dummyHumanoid:FindFirstChildOfClass("HumanoidDescription")
-				if dummyHumanoidDescription then
-					dummyHumanoidDescription:Destroy()
-				end
+			local player = if rankedSlimes[i] then rankedSlimes[i][1]["_player"] else nil
+			local character = if player then player.Character else nil
 
-				dummyHumanoid:ApplyDescription(humanoidDescription)
-
+			if player then
 				for attribute in dummy:GetAttributes() do
-					local playerValue = slime._player:GetAttribute(attribute)
+					local playerValue = player:GetAttribute(attribute)
 
 					if playerValue then
 						dummy:SetAttribute(attribute, playerValue)
 					end
 				end
 
-				humanoidDescription.Parent = dummy.Humanoid
+				if character then
+					local humanoid = character:FindFirstChildOfClass("Humanoid")
+
+					if humanoid then
+						local humanoidDescription = humanoid:FindFirstChildOfClass("HumanoidDescription")
+
+						if humanoidDescription then
+							task.spawn(pcall, dummyHumanoid.ApplyDescription, dummyHumanoid, humanoidDescription)
+						end
+					end
+				end
 			end
 		end
 	end)

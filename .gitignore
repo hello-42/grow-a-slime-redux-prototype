@@ -1,6 +1,7 @@
-*.lock
-selene.toml
-package-lock.json
 node_modules
+*.lock
+*.md
+*.toml
+package-lock.json
 sourcemap.json
-assets
+backup.rbxl
